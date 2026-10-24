@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8fc">
+  <title>AAD3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body data-max-upload-bytes="{{ max_upload_mb * 1024 * 1024 }}">
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="AAD3 home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M8 8.5V5.8A1.8 1.8 0 0 1 9.8 4h8.4A1.8 1.8 0 0 1 20 5.8v8.4a1.8 1.8 0 0 1-1.8 1.8h-2.7M5.8 8h8.4A1.8 1.8 0 0 1 16 9.8v8.4a1.8 1.8 0 0 1-1.8 1.8H5.8A1.8 1.8 0 0 1 4 18.2V9.8A1.8 1.8 0 0 1 5.8 8Z"/></svg>
+      </span>
+      <span>AAD<span class="brand-accent">3</span></span>
+    </a>
+    <nav class="topbar-actions" aria-label="Main navigation">
+      <a class="nav-link" href="#how-it-works">How it works</a>
+      <span class="privacy-pill"><span></span> Private by design</span>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> SMART STORAGE, SIMPLIFIED</div>
+        <h1 id="page-title">A little less clutter.<br><span>A lot more space.</span></h1>
+        <p class="hero-description">Find exact duplicate files in seconds. AAD3 compares file contents—not names—so you can safely spot copies and take back your storage.</p>
+        <a class="primary-button hero-button" href="#scanner">Get started <span aria-hidden="true">↘</span></a>
+        <div class="hero-note"><span class="shield-icon" aria-hidden="true">✓</span> Your files are processed securely on this server.</div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-glow"></div>
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+        <div class="art-card art-card-back"><span class="file-icon file-purple">▤</span><span></span><span></span></div>
+        <div class="art-card art-card-front">
+          <div class="art-card-top"><span class="file-icon file-blue">▤</span><span class="art-check">✓</span></div>
+          <span class="art-line art-line-long"></span><span class="art-line art-line-short"></span>
+          <div class="match-tag"><span>⟲</span> Exact match found</div>
+        </div>
+        <div class="floating-chip">SHA-256 <span>●</span></div>
+        <div class="sparkle sparkle-one">✦</div><div class="sparkle sparkle-two">✧</div>
+      </div>
+    </section>
+
+    <section class="dashboard" id="scanner" aria-labelledby="scanner-heading">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow section-eyebrow">YOUR WORKSPACE</div>
+          <h2 id="scanner-heading">Duplicate scanner</h2>
+          <p>Upload files to find identical content, whatever their names.</p>
+        </div>
+        <button class="text-button" id="report-button" type="button" disabled><span aria-hidden="true">↓</span> Download report</button>
+      </div>
+
+      <div class="stats-grid" aria-live="polite">
+        <article class="stat-card">
+          <div class="stat-icon icon-violet" aria-hidden="true">▤</div>
+          <div><p class="stat-label">Files scanned</p><p class="stat-value" id="total-files">—</p></div>
+          <span class="stat-decoration">01</span>
+        </article>
+        <article class="stat-card">
+          <div class="stat-icon icon-blue" aria-hidden="true">◈</div>
+          <div><p class="stat-label">Unique files</p><p class="stat-value" id="unique-files">—</p></div>
+          <span class="stat-decoration">02</span>
+        </article>
+        <article class="stat-card">
+          <div class="stat-icon icon-orange" aria-hidden="true">⧉</div>
+          <div><p class="stat-label">Duplicate copies</p><p class="stat-value" id="duplicate-files">—</p></div>
+          <span class="stat-decoration">03</span>
+        </article>
+        <article class="stat-card savings-card">
+          <div class="stat-icon icon-green" aria-hidden="true">✧</div>
+          <div><p class="stat-label">Potential savings</p><p class="stat-value" id="storage-savings">—</p></div>
+          <span class="stat-decoration">04</span>
+        </article>
+      </div>
+
+      <div class="workspace-grid">
+        <section class="panel upload-panel" aria-labelledby="upload-heading">
+          <div class="panel-heading">
+            <div><h3 id="upload-heading">Add files to scan</h3><p>Choose files from your device to compare.</p></div>
+            <span class="step-label">STEP 1</span>
+          </div>
+          <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Choose files or drag and drop them here">
+            <input id="file-input" type="file" multiple hidden>
+            <div class="upload-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M5 14v4.2A1.8 1.8 0 0 0 6.8 20h10.4a1.8 1.8 0 0 0 1.8-1.8V14"/></svg>
+            </div>
+            <h4>Drop files here to get started</h4>
+            <p>or <button class="inline-link" id="browse-button" type="button">browse files</button> from your device</p>
+            <span class="file-limit">Up to {{ max_upload_mb }} MB per upload · Any file type</span>
+          </div>
+          <ul class="queue-list" id="queue-list" aria-label="Files selected for upload"></ul>
+          <div class="upload-progress" id="upload-progress" hidden>
+            <div class="progress-copy"><span id="progress-label">Uploading files…</span><strong id="progress-percent">0%</strong></div>
+            <div class="progress-track"><span id="progress-bar"></span></div>
+          </div>
+          <button class="primary-button scan-button" id="upload-button" type="button" disabled>
+            <span class="button-spinner" aria-hidden="true"></span><span id="upload-button-label">Select files to scan</span><span aria-hidden="true">→</span>
+          </button>
+          <p class="upload-footnote"><span aria-hidden="true">ⓘ</span> Browsers can only upload files you select; they cannot scan folders on your device automatically.</p>
+        </section>
+
+        <section class="panel results-panel" aria-labelledby="results-heading">
+          <div class="panel-heading results-heading">
+            <div><h3 id="results-heading">Scan results</h3><p id="results-subtitle">Your uploaded files will appear here.</p></div>
+            <span class="step-label step-done" id="scan-status"><span></span> READY</span>
+          </div>
+          <div class="results-toolbar">
+            <label class="search-box" for="search-input"><span aria-hidden="true">⌕</span><input id="search-input" type="search" placeholder="Search files…" autocomplete="off"></label>
+            <label class="filter-select"><span class="sr-only">Filter results</span><select id="filter-select"><option value="all">All files</option><option value="duplicates">Duplicates</option><option value="unique">Unique</option></select></label>
+          </div>
+          <div class="results-content" id="results-content">
+            <div class="empty-state" id="empty-state">
+              <div class="empty-illustration" aria-hidden="true"><span>▤</span><span>⌕</span></div>
+              <h4>Nothing scanned yet</h4>
+              <p>Add a few files to see duplicate matches and reclaimable space.</p>
+            </div>
+            <div class="file-list" id="file-list" hidden></div>
+            <div class="no-matches" id="no-matches" hidden>No files match your search. Try another name or filter.</div>
+          </div>
+          <div class="results-footer" id="results-footer" hidden>
+            <label class="select-all"><input id="select-all" type="checkbox"><span>Select duplicate copies</span></label>
+            <button class="delete-button" id="delete-button" type="button" disabled><span aria-hidden="true">⌫</span> Remove selected</button>
+          </div>
+        </section>
+      </div>
+
+      <section class="duplicate-groups panel" id="duplicate-groups-panel" hidden aria-labelledby="groups-heading">
+        <div class="panel-heading"><div><h3 id="groups-heading">Duplicate groups</h3><p>Files in each group have matching SHA-256 content hashes.</p></div><span class="group-count" id="group-count"></span></div>
+        <div class="group-list" id="group-list"></div>
+      </section>
+    </section>
+
+    <section class="how-section" id="how-it-works">
+      <div class="eyebrow section-eyebrow">SIMPLE BY DESIGN</div>
+      <h2>How duplicate detection works</h2>
+      <div class="how-grid">
+        <article><span class="how-number">01</span><h3>Select your files</h3><p>Choose multiple files or drag them into the upload area. You decide what to share.</p></article>
+        <article><span class="how-number">02</span><h3>We compare content</h3><p>Each upload is hashed in chunks with SHA-256. Identical hashes indicate exact duplicate content.</p></article>
+        <article><span class="how-number">03</span><h3>Review and clean up</h3><p>Review matches, export a CSV, or remove selected duplicate copies from this server.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><a class="brand footer-brand" href="#"><span class="brand-mark" aria-hidden="true">A</span><span>AAD<span class="brand-accent">3</span></span></a><p>Compare smarter. Keep what matters.</p><span class="footer-note">Your personal files stay on your device unless you choose to upload them.</span></footer>
+  <div class="toast-region" id="toast-region" aria-live="polite" aria-atomic="true"></div>
+  <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+</body>
+</html>
